@@ -2,36 +2,58 @@
 @section('page_title','POST')
 @section('container')
 <div>
-    <h2><a href="/admin/post">Back</a></h2>
+    <h2><a href={{route('list')}}>Back</a></h2>
 </div>
 <div class="x_content">
     <br>
-        <form id="demo-form2" data-parsley-validate="" class="form-horizontal form-label-left" novalidate="" action="/admin/edit">
+        <form id="demo-form2" enctype="multipart/form-data" data-parsley-validate="" class="form-horizontal form-label-left" novalidate="" method="post" action="{{route('submitPost')}}">
 
+        @csrf
             <div class="item form-group">
                 <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Title
                 </label>
                 <div class="col-md-6 col-sm-6 ">
-                    <input type="text" id="first-name" required="required" class="form-control ">
+                    <input type="text" id="first-name" required="required" class="form-control " name="title">
+                    @error('title')
+                    <span class="field_error">{{$message}}</span>
+                    @enderror
                 </div>
             </div>
             <div class="item form-group">
                 <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Short Description
                 </label>
                 <div class="col-md-6 col-sm-6 ">
-                    <input type="text" id="last-name" name="last-name" required="required" class="form-control">
+                    <input type="text" id="last-name"  required="required" name="short_desc" class="form-control">
+                    @error('short_desc')
+                    <span class="field_error">{{$message}}</span>
+                    @enderror
                 </div>
             </div>
             <div class="item form-group">
                 <label for="middle-name" class="col-form-label col-md-3 col-sm-3 label-align">Long Description</label>
                 <div class="col-md-6 col-sm-6 ">
-                    <input id="middle-name" class="form-control" type="textarea" name="middle-name">
+                    <input id="middle-name" class="form-control" type="textarea" name="long_desc">
+                    @error('long_desc')
+                    <span class="field_error">{{$message}}</span>
+                    @enderror
                 </div>
+            </div>
+            <div class="item form-group">
+                <label class="col-form-label col-md-3 col-sm-3 label-align">Image</label>
+                    <div class="col-md-6 col-sm-6 ">
+                    <input type="file" name="img">
+                    @error('img')
+                    <span class="field_error">{{$message}}</span>
+                    @enderror
+                    </div>
             </div>
             <div class="item form-group">
                 <label class="col-form-label col-md-3 col-sm-3 label-align">Post Date</label>
                 <div class="col-md-6 col-sm-6 ">
-                    <input class="form-control" type="Date" name="middle-name">
+                    <input class="form-control" type="Date"  name="postdate">
+                    @error('postdate')
+                    <span class="field_error">{{$message}}</span>
+                    @enderror
                 </div>
             </div>
             <div class="item form-group">

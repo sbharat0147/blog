@@ -7,13 +7,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>LogIn </title>
-
+    <title> {{ @config('constant.site_name') }} </title>
     <!-- Bootstrap -->
     <link href="{{ asset('admin_asset/css/bootstrap.min.css') }}" rel="stylesheet">
     <!-- Font Awesome -->
     <link href="{{ asset('admin_asset/css/font-awesome.min.css') }}" rel="stylesheet">
-    
+
     <!-- Custom Theme Style -->
     <link href="{{ asset('admin_asset/css/custom.min.css') }}" rel="stylesheet">
   </head>
@@ -26,16 +25,19 @@
       <div class="login_wrapper">
         <div class="animate form login_form">
           <section class="login_content">
-            <form>
+            <form action="submit_login" method="post">
+                @csrf
               <h1>Login Form</h1>
               <div>
-                <input type="text" class="form-control" placeholder="Username" required="" />
+                <input type="text" class="form-control" placeholder="Username" name="username" required="" />
               </div>
               <div>
-                <input type="password" class="form-control" placeholder="Password" required="" />
+                <input type="password" class="form-control" placeholder="Password" name="pwd" required="" />
+                  {{session('msg')}}
               </div>
               <div>
-                <a class="btn btn-default submit" href="index.html">Log in</a>
+                  <input type="Submit" class="btn btn-default" value="Submit" name="submit" />
+                {{--<a class="btn btn-default submit" href="/submit_login">Log in</a>--}}
                 <a class="reset_pass" href="#">Lost your password?</a>
               </div>
 
@@ -50,8 +52,8 @@
                 <br />
 
                 <div>
-                  <h1><i class="fa fa-paw"></i> Gentelella Alela!</h1>
-                  <p>©2016 All Rights Reserved. Gentelella Alela! is a Bootstrap 3 template. Privacy and Terms</p>
+                  <h1><i class="fa fa-paw"></i> AB </h1>
+
                 </div>
               </div>
             </form>

@@ -3,7 +3,7 @@
 @section('container')
 
 <div>
-    <h2><a href="/admin/add">Add Post</a>   </h2>
+    <h2>    <a href={{route('addPage')}}>Add Page</a>   </h2>
 </div>
 <div class="x_content">
     <div class="row">
@@ -16,23 +16,24 @@
                     <thead>
                         <tr>
                             <th>Sl No</th>
-                            <th>Title</th>
-                            <th>Short Desc</th>
-                            <th>Image</th>
-                            <th>Post Date</th>
+                            <th>Name</th>
+                            <th>Description</th>
+                            <th>Slug</th>
+                            <th>Added on</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     @foreach($result as $list)
                          <tr>
                             <th>{{$list->id}}</th>
-                            <th>{{$list->title}}</th>
-                            <th>{{$list->short_desc}}</th>
-                            <th><img src="{{ asset('/storage/admin_asset/images/'.$list->image) }}" width="100%" height="100px"> </th>
-                            <th>{{$list->post_date}}</th>
+                            <th>{{$list->name}}</th>
+                            <th>{{$list->description}}</th>
+                             <th>{{$list->slug}}</th>
+{{--                            <th><img src="{{ asset('/storage/admin_asset/images/'.$list->image) }}" width="100%" height="100px"> </th>--}}
+                            <th>{{$list->added_on}}</th>
                              <td>
-                                 <a href="{{url('admin/edit/'.$list->id)}}" type="button" class="btn btn-dark color_white">Edit</a>
-                                 <a href="{{url('admin/delete/'.$list->id)}}" type="button" class="btn btn-danger color_white">Delete</a>
+                                 <a href="{{url('admin/editPage/'.$list->id)}}" type="button" class="btn btn-dark color_white">Edit</a>
+                                 <a href="{{url('admin/deletePage/'.$list->id)}}" type="button" class="btn btn-danger color_white">Delete</a>
 
                              </td>
                         </tr>

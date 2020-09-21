@@ -11,3 +11,13 @@
 #slash{
 	display: none;
 }
+
+.color_white{
+
+    color:#FFFFFF !important;
+}
+
+.field_error{
+
+    color: darkred;
+}
