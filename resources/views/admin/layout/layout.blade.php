@@ -33,7 +33,7 @@
                         <ul class="nav side-menu">
                            <li><a href="{{route('list')}}"><i class="fa fa-home"></i> Post </a></li>
                <li><a href="{{route('listPage')}}"><i class="fa fa-home" ></i> Page </a></li>
-               <li><a><i class="fa fa-home"></i> Contact Us </a></li>
+               <li><a href="{{route('listcont')}}"><i class="fa fa-home"></i> Contact Us </a></li>
 
                         </ul>
                      </div>

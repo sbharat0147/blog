@@ -14,8 +14,18 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('login');
 });
+
+// Routes definded for frontend part of the blog site.
+
+Route::get('abblog', 'front\Frontcontroller@index')->name('home');
+Route::get('abblog/about', 'front\Frontcontroller@about')->name('about');
+Route::get('abblog/contact', 'front\Frontcontroller@contact')->name('contact');
+Route::get('abblog/frontpost', 'front\Frontcontroller@frontpost')->name('frontpost');
+
+
+
 
 Route::get('/login','Logincontroller@login')->name('login');
 
@@ -24,7 +34,7 @@ Route::post('submit_login','Logincontroller@auth');
 Route::get('/logout','Logincontroller@logout')->name('logout');
 
 
-//Routes here are passed through middleware for authentication of user before entering into controller
+//Routes here are backend routes which will be used by admins and passed through middleware for authentication of user before entering into controller
 Route::group(['middleware'=>['admin_auth']], function () {
 
     Route::get('/admin/post', 'admin\Post@list')->name('list');
@@ -50,5 +60,16 @@ Route::group(['middleware'=>['admin_auth']], function () {
     Route::get('/admin/deletePage/{id}' , 'admin\Page@delete')->name('deletePage');
 
 
+//Now followings are the routes for contacts
+
+    Route::get('/admin/cont', 'admin\cont@list')->name('listcont');
+
+    Route::get('/admin/addcont', 'admin\cont@add')->name('addcont');
+    Route::post('/admin/submitcont', 'admin\cont@submit')->name('submitcont');
+
+    Route::get('/admin/editcont/{id}', 'admin\cont@edit')->name('editcont');
+    Route::post('/updatecont/{id}', 'admin\cont@update');
+
+    Route::get('/admin/deletecont/{id}' , 'admin\cont@delete')->name('deletecont');
 
 });
